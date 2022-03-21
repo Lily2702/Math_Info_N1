@@ -1,1 +1,0 @@
-Etude sur la décomposition en produit de facteurs premiers des entiers naturels, au travers de l'étude du théorème fondamental de l'arithmétique, des principes de Plus Grand Commun Diviseur et Plus Petit Commun Multiple, et conception d'un algorithme de décomposition en produit de facteurs premiers.
