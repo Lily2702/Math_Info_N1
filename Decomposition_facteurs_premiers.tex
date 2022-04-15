@@ -1,0 +1,328 @@
+\documentclass[titlepage]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{mathtools, amssymb, amsthm, amsmath}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\newtheorem{Prop}{Propriété}
+\newtheorem{proofi}{Preuve}
+\newtheorem{defi}{Définition}
+\newtheorem{theo1}{Lemme}
+\newtheorem{theo}{Théorême}
+\newtheorem{Absurde}{Demonstration par l'Absurde}
+\newtheorem{dem}{Demonstration}
+
+\newcommand{\encadrement}[1]{\noindent\fbox{
+\begin{minipage}{\textwidth}
+#1
+\end{minipage}}}
+
+\title{La décomposition en produit de facteurs premiers}
+\author{Guillem Audebert - Florian Berger - Lyse Rousseau}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\bigskip
+\section{Definition de l'ensemble des entiers naturels}
+
+
+Afin d'introduire ce cours, il convient de poser l'ensemble des entiers naturels positif, que l'on note $\mathbb{N}$.
+
+\begin{equation*}
+    \mathbb{N} = \{ 0;1;2;3;... \}
+\end{equation*}
+
+Par exemple $4 \in \mathbb{N}$ mais $\pi \notin \mathbb{N}$ ou $ -3 \notin \mathbb{N}$
+\par
+\textit{Nombres pairs} : Tous les nombres pouvant s'écrire sous la forme $2k$ avec $k \in 
+\mathbb{N}$\label{divis}.
+\par
+\textit{Nombres impairs} : Tous nombres pouvant s'écrire sous la forme $2k+1$ avec $k \in \mathbb{N}$.
+
+\section{Nombres Premiers}
+
+\encadrement{\begin{Prop}
+Un entier $n \in \mathbb{N}$ est premier si et seulement si il est divisible par $n$ et par $1$.
+\end{Prop}}
+\medskip
+\par
+Avec cette définition, on peut déterminer que $17$ est un nombre premier, car $1|17$ et $17|17$, et $17$ n'admet pas d'autre diviseur.
+\par
+Mais $1$ n'est pas un nombre premier, car il ne satisfait pas les deux conditions néccessaires. En effet, $1$ ne possède qu'un seul diviseur : lui même : $1|1$.
+\medskip
+
+\encadrement{\begin{Prop}
+L'entier $2$ est le seul nombre premier pair.
+\end{Prop}}
+\medskip
+\par
+
+\begin{Absurde}
+Supposons $m$ un entier premier et pair différent de 2.
+	\begin{align*}
+    	& m = 2k 
+    		& \text{avec }  k \in \mathbb{N} \\
+    	& \frac{m}{2} = k
+	\end{align*}
+
+car m est pair et 2 divise m, d'après la définition des nombres pairs donnée dans la section \ref{divis}.
+
+Donc m possède au moins trois diviseurs : \{ 1; 2; m \} 
+
+Or ceci est absurde puisque un nombre premier ne peut avoir trois diviseurs. 
+
+Donc m n'est pas premier.
+
+\end{Absurde}
+
+\encadrement{\begin{Prop}
+$\forall$ $n\in\mathbb{N}$, n > 1 et n non premier, on admet au moins un diviseur premier d tel que $2 \leq  d \leq \sqrt{n}$
+\end{Prop}}
+\par
+
+\begin{proofi}
+En admettant que $n$ soit un entier non premier, et $E$ l'ensemble des diviseurs de $n$ en excluant $1$ et lui-même. On induit que $E$ n’est pas un ensemble vide : il contient des diviseurs de $n$, noté $d$, entre $2$ et $n-1$, tel que $E$ admet un plus petit élément $d$. \\ 
+Ainsi, $d$ est premier, sinon il admettrait un diviseur autre que $1$ et lui-même. On peut alors écrire que $n = d \times p $ avec $d \leq p$, $p\in
+\mathbb{N}$, car $d$ est le plus petit élément de $E$. Donc, en multipliant l’inégalité par $d$, on a : $d \times d \leq p \times d$,  soit $(d^2) \leq (p \times d = n)$, et ainsi $d \leq \sqrt{n} $; d’où $2 \leq  d \leq \sqrt{n}$.
+\end{proofi}
+\medskip
+
+\encadrement{\begin{Prop}
+Il existe une infinité de nombres premiers.
+\end{Prop}}
+
+\begin{proofi}
+On suppose qu’il existe un nombre fini de nombres premiers $d_{1},d_{2}, …, d_{n}$. On le notera $f$.
+En effet $2 \leq f + 1$, donc $f$ contient au moins un 
+diviseur premier $d_{i}$ parmi $f$ soit $d_{1},d_{2}, …, d_{n}$
+Alors $d_{i}$ divise $f+1$ et $f$, donc il divise leur différence, 
+soit $d_{i}$ divise $1$ : $(f+1) - f =1$, ce qui est contradictoire. Il existe 
+donc une infinité de nombres 
+premiers.
+\end{proofi}
+
+\section{Théorèmes fondamentales de l'arithmétique}
+
+\encadrement{\begin{theo1}
+Tout nombres entier naturel $n$ strictement supérieur à 1 peut s'écrire comme un 
+produit de facteur premier comme suit (On appelle cela une décomposition en 
+facteurs premiers):
+
+	\begin{equation*}
+    	n = {q_{1}}^{p_{1}}\times {q_{2}}^{p_{2}}\times ...\times {q_{n}}^{p_{n}}
+	\end{equation*}
+
+ avec $q_{k}$ un nombre premier et $p_{k}$ un entier positif. \par
+ On peut donner l'exemple suivant:
+ 
+	\begin{equation*}
+    	12 = 4 \times 3 = 2^{2} \times 3^{1}
+	\end{equation*}
+\end{theo1}}
+\begin{dem}
+Supposons que pour tout $n > 2$, possède un diviseur premier $p$. Et si $p$ est premier alors $p \rightarrow p|a$ ou $p|b$ avec $a=1$ et  $b=p$ ou $a=$ et $b=1$
+\\ \\
+On note $P_{(n)}$, l'existence d'une décomposition en facteur premier pour l'entier n.
+\\ \\
+\Large Initialisation : \normalsize Pour $n=2$ l'existence est vérifiée , en effet $2^{1}$ est nombre premier. Donc $P_{(2)}$ est vraie.
+\\ \\ \Large Hérédité : \normalsize Montrons l'existence d'une décomposition pour $n+1$ et donc que $P_{(n+1)}$ est vraie.
+\\ Selon la première proposition $n+1$ possède un diviseur premier noté $p$
+\\ Donc $n+1= p \times q$ avec $q < n+1$
+\\ \\ Si $q=1$ alors $n+1= q$ est une décomposition de $n+1$
+\\ Sinon, selon l’hypothèse de récurrence pour $q \leq n$ , $q$  possède une décomposition, on en déduit une décomposition de $n+1$ .
+\\ \\ \Large Conclusion : \normalsize Dans les deux cas $P_{(n+1)}$ est vraie. D'après le principe de récurrence $P_{(n)}$ est vraie pour tout entier $n > 2$
+\end{dem}
+
+
+\encadrement{\begin{theo1}
+Cette décomposition est unique pour chaque  nombre: On dit qu'il y a unicité de 
+la décomposition.
+\end{theo1}}
+
+\begin{dem}
+Supposons $m$ un nombre pouvant s'écrire de deux manières différentes: 
+	\begin{equation*}
+		m = {q_{1}}^{a_{1}}\times {q_{2}}^{a_{2}}\times ...
+		\times {q_{n}}^{a_{n}} = {p_{1}}^{b_{1}}\times {p_{2}}^{b_{2}}
+		\times ...\times {p_{n}}^{b_{n}}
+	\end{equation*}
+
+$q_{1}$ divise $m$, donc $q_{1}$ divise $p_{1} \times p_{2} \times p_{3} \times 
+... \times p_{m}$ \par \medskip
+D'après le lemme d'Euclide, soit $q_{1}$ divise $p_{1}$ (c'est-à-dire, 
+nécessairement, est égal à $p_{1}$), soit il divise $p_{2} \times p_{3} \times 
+... \times p_{m}$. En recommençant avec $q_{1}$ et $p_{2} \times p_{3} \times ... 
+\times p_{m}$ on en déduit que $q_{1}$ est égal à l'un des facteurs $p_{k}$. Sans perdre de généralité, disons que $q_{1} = p_{1}$. On simplifie par $q_{1}$ et on recommence sur
+
+$q_{2} \times q_{3} \times ... \times q_{n} = p_{2} \times p_{3} \times ... 
+\times q_{m}$\bigskip
+
+Finalement on arrive forcément à $n = m$ (sinon il y aurait une contradiction). 
+Et chaque $p_{i}$ correspond à un et un seul $q_{i}$. Les deux décompositions sont identiques.
+\end{dem}
+
+\section{Exemple de factorisation en facteurs premiers :}
+\begin{dem}
+Voici quelques nombres premiers : 2, 3, 5, 7, 11, 13, 17, 19...
+On va dans un odre croissant prendre chacun des nombres premiers pour oir si ce 
+dernier divise bien ce nombre petit à petit dans une division euclidienne 
+successive jusqu'à que sont reste soit nul.\par
+\begin{tabular}{r|r c l|l}
+$84$ &  &  & $36$& \\
+\hline
+$84$ & $2 $&   &$ 36 $&$ 2$\\
+$42 $& $2 $&   & $18 $& $2$\\
+$21$ & $3 $&   & $9 $& $3$\\
+$7 $& $7 $&   & $3 $& $3$\\
+$1$ & $0$ &   & $1$ & $0$\\
+\end{tabular}
+\end{dem}
+Soit : \par
+$84 = 2^{2} \times 3 \times 7 $\par
+$36 = 2^{2} \times 3^{2}$
+
+\section{PGCD et PPCM}
+
+\subsection{PGCD :}
+
+\encadrement{\begin{defi} 
+Soit a et b deux entiers relatifs non tous nuls.\\
+L’ensemble des diviseurs communs à a et b admet un plus grand élément d,
+appelé plus grand commun diviseur, que l’on note PGCD(a;b).
+\end{defi}}
+
+\begin{Prop}
+$PGCD (a,b) = PGCD(b,a)$\\
+$PGCD (a,b) = PGCD(|a|,|b|)$\\
+$PGCD(a,0) = a$\\
+$PGCD(ka,kb) = k \times PGCD(a,b)$  avec $k$ un entier naturel non nul.
+\end{Prop}
+
+\encadrement{\begin{defi} 
+Soit a et b deux entiers relatifs non nuls.\\
+a et b sont premiers entre eux si $PGCD(a;b) = 1$.
+\end{defi}}
+
+\subsection{PPCM :}
+
+\encadrement{\begin{defi}
+Soit a et b deux entiers relatifs non nuls.\\
+L’ensemble des multiples strictement positifs communs à a et b admet un plus petit élément que l’on note PPCM(a;b).
+\end{defi}}
+
+\begin{Prop}
+Soit a et b premiers entre eux,\\
+$PPCM(a ; b) = a \times b$\\
+$PPCM(ka ; kb) = k \times PPCM(a ; b)$; avec $k \in {\mathbb{N}}^{*}$
+\end{Prop}
+
+\encadrement{\begin{Prop}
+Soit a et b deux entiers naturels non nuls.\\
+L’ensemble des multiples de PPCM(a ; b) est contenu dans l'ensemble des multiples communs de a et de b.
+\end{Prop}}
+
+\begin{proofi} 
+Soit m un multiple du PPCM(a ; b),\\
+Ainsi m est multiple à a et à b.\\
+En effet, l'ensemble des multiples communs à a et à b est l'ensemble des multiples de leur PPCM.
+\end{proofi}
+
+\begin{theo}
+ Nous pouvons établir avec le pgcd(a,b) et le ppcm(a,b)  la relation suivante:  
+
+	\begin{align*}
+	\frac{ppcm(a,b)}{pgcd(a,b)} = a \times b
+	\end{align*}
+	
+\end{theo}
+
+\subsection{Lien PGCD et PPCM décomposition en facteurs 
+premiers}
+\begin{Prop}
+Soit a et b deux entiers non nuls. \\
+a et b sont dit premiers entre eux si et seulement si PGCD(a;b)=1.
+\end{Prop}
+
+\begin{Prop}
+Soit a et b deux entiers naturels différents de 0 et 1, qui ne sont pas premiers, et se décomposent en produit de facteurs premiers comme suit : 
+
+	\begin{align*}
+	a & = {P_{1}}^{f_{1}} \times {P_{2}}^{f_{2}} \times {P_{3}}^{f_{3}} … 
+\times  {P_{n}}^{f_{n}}\\
+	b & = {P_{1}}^{F_{1}} \times {P_{2}}^{F_{2}} \times {P_{3}}^{F_{3}} … 
+\times  {P_{n}}^{F_{n}}\\
+	\end{align*}
+
+\noindent où $P_{1},P_{2},P_{3} …, P_{1}$ sont des nombres premiers,\\
+et $f_{1},f_{2},f_{3} …, f_{n}$, $F_{1},F_{2},F_{3} …, F_{n}$, des entiers naturels éventuellement nuls.\\
+Pour toute valeur k comprise entre 1 et n, on pose $m_{k}$ comme le minimum entre $f_{k}$ et $F_{k}$, et $M_{k}$ comme le maximum entre $f_{k}$ et $F_{k}$.\\
+D’où $PGCD(a,b) = {P_{1}}^{m_{1}} \times {P_{2}}^{m_{2}} \times {P_{3}}^{m_{3}} … \times  {P_{n}}^{m_{n}}$\\
+et $PPCM(a,b) = {P_{1}}^{M_{1}} \times {P_{2}}^{M_{2}} \times {P_{3}}^{M_{3}} … \times  {P_{n}}^{M_{n}}$\\
+\end{Prop}
+
+\section{Décomposition en produit de facteurs premiers : Algorithme}
+
+Nous avons développé un algorithme permettant la décomposition d'un entier sous forme de produit de facteurs premiers. Le programme, sous Python, est le suivant :
+\medskip
+
+\lstinputlisting[language=python]{Decomposition_facteurs_premiers.py}
+
+\medskip \par L'algorithme s'exécute comme suit :
+
+\begin{enumerate}
+\item \underline{La fonction "liste\_facteurs" :}
+\medskip
+ 
+	\begin{itemize}
+ 	\item La fonction prend en argument un entier.
+ 	\item Une liste "facteurs" est créée, et sera complétée par l'ensemble des facteurs premiers de l'entier en argument.
+ 	\item "variable" prend la valeur de "entier", et "diviseur" prend pour valeur "2" (le premier entier premier).
+ 	\item On vérifie que la variable est divisible par 2. Si c'est le cas, 2 est ajouté à la liste des facteurs premiers.
+ 	\item "variable" prend pour valeur le quotient de "variable" par 2.
+ 	\item On répète l'opération tant que 2 divise "variable".
+ 	\item Dès que "variable" n'est plus divisible par 2, on incrémente la variable "diviseur" par +1. 
+ 	\item Les nombres non premiers seront ainsi ignorés, car ils sont, par définition, des produits de facteurs premiers inférieurs à eux, et seront donc "décomposés" avant de pouvoir être employés comme diviseur.
+ \end{itemize}
+ 
+\medskip
+\item \underline{La fonction "occurrence\_liste" :}
+\medskip
+
+	\begin{itemize}
+	\item La fonction prend en argument une liste donnée.
+	\item En important la fonction "Counter" du paquet "collections", on obtient un dictionnaire faisant apparaître le nombre de fois qu'un élément apparaît dans une liste.
+	\end{itemize}
+
+\medskip
+\item \underline{La fonction "decomposition" :}
+\medskip 
+
+	\begin{itemize}
+	\item La fonction prend en argument un entier.
+	\item En employant les fonctions "liste\_facteurs" puis "occurrence\_liste" susmentionnées, on obtient un dictionnaire faisant apparaître les facteurs premiers de l'entier choisi, ainsi que leur nombre d'apparition (ce nombre sera la puissance du facteur premier).
+	\item La fonction met ensuite en page les différents éléments pour faire apparaître la décomposition en produit de facteurs premiers.
+	\end{itemize}
+\end{enumerate}
+
+
+
+   
+\section{Bibliographie}
+\begin{enumerate}
+\item \href{http://pierrelux.net/documents/cours/ts/premiers_ppcm.pdf}{Pierrelux : "Les Nombres Premiers - PPCM"}
+\item \href{http://licence-math.univ-lyon1.fr/lib/exe/fetch.php?media=p13:algii:1-arith.pdf}{Université Grenoble I, Didieur Piau, Bernard Ycart : "Arithmétique"}
+\item \href{https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathCRPEcours/09_crpe_nombres_premiers_pgcd_et_ppcm.pdf}{Lycée adulte : "Nombres Premiers. PGCD et PPCM"}
+\item \href{http://math.univ-lyon1.fr/capes/IMG/pdf/new.pgcd.pdf}{Lyon 1 : "PGCD et PPCM. Nombres premiers entre eux"}
+\item \href{http://math.univ-lyon1.fr/capes/IMG/pdf/new.premier.pdf}{Lyon 1 : "Les nombres premiers"}
+\item \href{https://www.lyceedadultes.fr/sitepedagogique/documents/math/mathTermSspe/03_Nombres_premiers/03_cours_les_nombres_premiers.pdf}{Lycee adulte : "Les nombres premiers"}
+\end{enumerate}
+
+\end{document}
